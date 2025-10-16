@@ -3,6 +3,7 @@
 A simple threaded, resumable brute-forcing utility for FileRun login endpoints.
 Supports username brute (username wordlist + single password), password brute (single username + password wordlist), or full combo. Detects common JSON responses (invalid username / invalid password / account deactivated / possible valid). Two output modes: `verbose` and `silent` (spinner + minimal output). Includes pause & resume via a session file.
 
+![Run](https://raw.githubusercontent.com/mzrismuarf/filerun-bruteforce/refs/heads/main/demo/image.png)
 ---
 
 ## Features
@@ -55,13 +56,14 @@ Show help / usage banner:
 ```bash
 python3 run.py
 ```
+![Run](https://raw.githubusercontent.com/mzrismuarf/filerun-bruteforce/refs/heads/main/demo/run.gif)
 
 ### 1) Brute-force usernames (username wordlist + single password)
 
 ```bash
 python3 run.py -u http://target.com/ -L usernames.txt -p MyKnownPassword -t 100 -v
 ```
-
+![Bruteforce-username](https://raw.githubusercontent.com/mzrismuarf/filerun-bruteforce/refs/heads/main/demo/bruteforce-username.gif)
 When running this, if a response contains `"error":"Invalid password."` the tool treats that username as **valid** (password is wrong). Those usernames will be listed at the end — useful for a follow-up password brute.
 
 ### 2) Brute-force passwords (single username + password wordlist)
@@ -71,12 +73,15 @@ Verbose output (full):
 ```bash
 python3 run.py -u http://target.com/ -l superuser -P /usr/share/wordlists/rockyou.txt -t 100 -v
 ```
+![Bruteforce-password-v](https://raw.githubusercontent.com/mzrismuarf/filerun-bruteforce/refs/heads/main/demo/bruteforce-password-v.gif)
 
 Silent mode (spinner + minimal messages):
 
 ```bash
 python3 run.py -u http://target.com/ -l superuser -P /usr/share/wordlists/rockyou.txt -t 100 -s
 ```
+
+![Bruteforce-username](https://raw.githubusercontent.com/mzrismuarf/filerun-bruteforce/refs/heads/main/demo/bruteforce-password.gif)
 
 ### 3) Combo mode (both lists)
 
